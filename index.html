@@ -1,0 +1,212 @@
+<html style="margin:0;padding:0;">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#bd3193">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4/fonts/remixicon.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+(function(){
+  var s=document.createElement('style');
+  s.textContent=':root{--bg:#fdf9fb;--card:#fff;--text:#0f172a;--muted:#64748b;--accent:#bd3193;--accent-soft:rgba(189,49,147,.12);--accent2:#0891b2;--accent2-soft:rgba(8,145,178,.12);--green:#059669;--green-soft:rgba(5,150,105,.12);--border:rgba(15,23,42,.08)}'
+  +'*{font-family:"Bricolage Grotesque",sans-serif;box-sizing:border-box}'
+  +'.grad{background:linear-gradient(120deg,#bd3193,#7c3aed,#0891b2)}'
+  +'.grad-text{background:linear-gradient(100deg,#bd3193,#0891b2);-webkit-background-clip:text;background-clip:text;color:transparent}'
+  +'.cat-tab{cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;color:var(--muted)}'
+  +'.cat-tab.active{border-bottom-color:var(--accent);color:var(--accent);font-weight:700}'
+  +'.sub-tab{cursor:pointer;transition:all .2s;border-radius:8px;padding:6px 12px;font-size:13px;font-weight:600}'
+  +'.sub-tab.active{background:var(--accent-soft);color:var(--accent)}'
+  +'.sub-tab:not(.active){background:#f1f5f9;color:var(--muted)}'
+  +'.tpl{cursor:pointer;border:2px solid transparent;border-radius:12px;padding:12px;transition:all .2s;background:#fff}'
+  +'.tpl:hover{border-color:var(--accent);background:var(--accent-soft);transform:translateY(-2px)}'
+  +'.tpl.picked{border-color:var(--accent);background:var(--accent-soft)}'
+  +'.plat{cursor:pointer;border-radius:999px;padding:5px 12px;font-size:12px;font-weight:600;transition:all .2s}'
+  +'.plat.active{background:var(--accent);color:#fff}'
+  +'.plat:not(.active){background:#f1f5f9;color:var(--muted)}'
+  +'.mode-btn{cursor:pointer;transition:all .2s;border-radius:14px;padding:16px 20px;display:flex;align-items:center;gap:12px}'
+  +'.mode-btn.active{background:var(--accent);color:#fff;box-shadow:0 8px 24px rgba(189,49,147,.3)}'
+  +'.mode-btn:not(.active){background:#fff;border:1px solid var(--border);color:var(--muted)}'
+  +'.star{cursor:pointer;color:#cbd5e1;transition:color .2s;font-size:18px}'
+  +'.star.on{color:#f59e0b}'
+  +'textarea:focus,input:focus,select:focus{outline:none;box-shadow:0 0 0 3px rgba(189,49,147,.18);border-color:var(--accent)!important}'
+  +'.fade-in{animation:fi .4s ease}@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}'
+  +'.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:12px 22px;border-radius:12px;font-size:14px;z-index:99;box-shadow:0 10px 30px rgba(0,0,0,.3);opacity:0;transition:opacity .3s;pointer-events:none}'
+  +'.toast.show{opacity:1}'
+  +'.proj-item{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;border-radius:10px;background:#f8fafc;cursor:pointer;transition:all .15s;border:1px solid transparent}'
+  +'.proj-item:hover{background:var(--accent-soft);border-color:var(--accent)}'
+  +'.autosave-dot{width:8px;height:8px;border-radius:50%;background:#10b981;display:inline-block;margin-right:6px;animation:pd 2s infinite}@keyframes pd{0%,100%{opacity:1}50%{opacity:.3}}';
+  document.head.appendChild(s);
+})();
+</script>
+<div style="background:var(--bg);color:var(--text);">
+
+<div class="grad" style="color:#fff;padding:40px 24px;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+      <div style="width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;"><i class="ri-booklet-fill" style="font-size:20px;"></i></div>
+      <span style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;">R LAAMBO · Riyanti Shop</span>
+      <span style="margin-left:auto;font-size:11px;background:rgba(255,255,255,.2);padding:4px 10px;border-radius:999px;">v1.0 Final · PWA</span>
+    </div>
+    <h1 style="font-size:clamp(26px,4vw,38px);font-weight:800;line-height:1.15;margin:0;">R LAAMBO Studio<span style="opacity:.9;"> — Konten Siap Upload dalam Menit</span></h1>
+    <p style="margin-top:10px;opacity:.9;max-width:620px;">Pustaka templat · AI tulis naskah · Koleksi pribadi · Favorit · Proyek tersimpan · Ekspor gambar & teks. Auto-save aktif · Bisa di-install ke HP.</p>
+  </div>
+</div>
+
+<div style="max-width:1100px;margin:0 auto;padding:28px 20px 60px;">
+
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;">
+    <div class="mode-btn active" id="mPustaka" onclick="setMode('pustaka')" style="flex:1 1 240px;">
+      <i class="ri-grid-fill" style="font-size:22px;"></i>
+      <div><div style="font-weight:700;font-size:15px;">Pilih dari Pustaka</div><div style="font-size:12px;opacity:.85;">Tinggal klik — hook, naskah, CTA, atau paket lengkap</div></div>
+    </div>
+    <div class="mode-btn" id="mTulis" onclick="setMode('tulis')" style="flex:1 1 240px;">
+      <i class="ri-quill-pen-line" style="font-size:22px;"></i>
+      <div><div style="font-weight:700;font-size:15px;">Tulis / AI Buatkan</div><div style="font-size:12px;opacity:.85;">Ketik topik → naskah jadi, atau tulis manual</div></div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;gap:20px;">
+
+    <div style="flex:1 1 420px;min-width:0;">
+
+      <div id="panelPustaka" style="background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;margin-bottom:18px;box-shadow:0 2px 12px rgba(0,0,0,.04);">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px;">
+          <h2 style="font-weight:700;font-size:18px;margin:0;" class="grad-text">Pustaka Templat</h2>
+          <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer;">
+            <input type="checkbox" id="onlyFav" onchange="renderTpl()" style="accent-color:#f59e0b;"> Hanya favorit <i class="ri-star-fill" style="color:#f59e0b;"></i>
+          </label>
+        </div>
+        <div style="display:flex;gap:4px;flex-wrap:wrap;border-bottom:1px solid var(--border);margin-bottom:14px;" id="catTabs">
+          <div class="cat-tab active" data-cat="edukasi" onclick="setCat(this)" style="padding:8px 12px;font-size:13px;">Edukasi</div>
+          <div class="cat-tab" data-cat="dongeng" onclick="setCat(this)" style="padding:8px 12px;font-size:13px;">Dongeng</div>
+          <div class="cat-tab" data-cat="produk" onclick="setCat(this)" style="padding:8px 12px;font-size:13px;">Produk</div>
+          <div class="cat-tab" data-cat="semangat" onclick="setCat(this)" style="padding:8px 12px;font-size:13px;">Semangat</div>
+          <div class="cat-tab" data-cat="umum" onclick="setCat(this)" style="padding:8px 12px;font-size:13px;">Umum</div>
+          <div class="cat-tab" data-cat="saya" onclick="setCat(this)" style="padding:8px 12px;font-size:13px;color:#f59e0b;"><i class="ri-folder-user-line"></i> Koleksi Saya</div>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;" id="subTabs">
+          <div class="sub-tab active" data-sub="hook" onclick="setSub(this)">Hook</div>
+          <div class="sub-tab" data-sub="naskah" onclick="setSub(this)">Naskah</div>
+          <div class="sub-tab" data-sub="cta" onclick="setSub(this)">CTA</div>
+          <div class="sub-tab" data-sub="paket" onclick="setSub(this)">Paket Lengkap</div>
+        </div>
+        <div id="tplList" style="max-height:380px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding-right:4px;"></div>
+      </div>
+
+      <div id="panelTulis" style="display:none;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;margin-bottom:18px;box-shadow:0 2px 12px rgba(0,0,0,.04);">
+        <h2 style="font-weight:700;font-size:18px;margin:0 0 14px;" class="grad-text">AI Tulis Naskah</h2>
+        <label style="display:block;font-size:13px;font-weight:600;margin-bottom:6px;">Topik / kata kunci</label>
+        <input id="aiTopik" type="text" placeholder="contoh: cara ajarkan anak sopan santun" style="width:100%;padding:11px 13px;border:1px solid var(--border);border-radius:10px;font-size:14px;margin-bottom:12px;">
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
+          <select id="aiGaya" style="flex:1 1 130px;padding:9px;border:1px solid var(--border);border-radius:10px;font-size:13px;">
+            <option value="edukasi">Edukasi</option><option value="dongeng">Dongeng</option><option value="produk">Produk</option><option value="semangat">Semangat</option>
+          </select>
+          <select id="aiDur" style="flex:1 1 130px;padding:9px;border:1px solid var(--border);border-radius:10px;font-size:13px;">
+            <option value="pendek">±30 detik</option><option value="sedang" selected>±45 detik</option><option value="panjang">±60 detik</option>
+          </select>
+        </div>
+        <button onclick="genAI()" style="width:100%;padding:12px;border:none;border-radius:10px;background:var(--accent);color:#fff;font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 6px 18px rgba(189,49,147,.3);"><i class="ri-magic-line"></i> Buatkan Naskah Lengkap</button>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;margin-bottom:18px;box-shadow:0 2px 12px rgba(0,0,0,.04);">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
+          <h3 style="font-weight:700;font-size:16px;margin:0;"><i class="ri-folder-3-line" style="color:#7c3aed;"></i> Proyek Tersimpan</h3>
+          <span style="font-size:11px;color:var(--muted);"><span class="autosave-dot"></span>Auto-save aktif</span>
+        </div>
+        <div style="display:flex;gap:8px;margin-bottom:12px;">
+          <input id="namaProyek" type="text" placeholder="Nama proyek, contoh: Tips Baca Cepat" style="flex:1;padding:9px 12px;border:1px solid var(--border);border-radius:10px;font-size:13px;">
+          <button onclick="simpanProyek()" style="padding:9px 16px;border:none;border-radius:10px;background:#7c3aed;color:#fff;font-weight:700;font-size:13px;cursor:pointer;white-space:nowrap;"><i class="ri-save-line"></i> Simpan</button>
+        </div>
+        <div id="daftarProyek" style="display:flex;flex-direction:column;gap:6px;max-height:240px;overflow-y:auto;"></div>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.04);">
+        <h3 style="font-weight:700;font-size:16px;margin:0 0 14px;"><i class="ri-settings-3-line" style="color:var(--accent2);"></i> Pengaturan Video</h3>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
+          <div style="flex:1 1 140px;">
+            <label style="display:block;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:4px;">Suara AI</label>
+            <select id="suara" style="width:100%;padding:9px;border:1px solid var(--border);border-radius:10px;font-size:13px;">
+              <option>Wanita Ceria</option><option>Wanita Lembut</option><option>Pria Tegas</option><option>Anak Ceria</option>
+            </select>
+          </div>
+          <div style="flex:1 1 140px;">
+            <label style="display:block;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:4px;">Musik Latar</label>
+            <select id="musik" style="width:100%;padding:9px;border:1px solid var(--border);border-radius:10px;font-size:13px;">
+              <option>Sesuai Konten</option><option>Ceria & Semangat</option><option>Tenang & Lembut</option><option>Edukasi</option><option>Tanpa Musik</option>
+            </select>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+          <span style="font-size:12px;font-weight:600;color:var(--muted);">Platform:</span>
+          <div class="plat active" data-plat="TikTok/Reels" onclick="setPlat(this)">TikTok/Reels</div>
+          <div class="plat" data-plat="Instagram" onclick="setPlat(this)">Instagram</div>
+          <div class="plat" data-plat="YouTube" onclick="setPlat(this)">YouTube</div>
+          <div class="plat" data-plat="Canva" onclick="setPlat(this)">Canva</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex:1 1 380px;min-width:0;">
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,.04);">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px;">
+          <h2 style="font-weight:700;font-size:18px;margin:0;" class="grad-text">Naskah Kamu</h2>
+          <button onclick="simpanKeKoleksi()" style="padding:7px 12px;border:1px solid #f59e0b;background:#fffbeb;color:#b45309;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;"><i class="ri-bookmark-line"></i> Simpan ke Koleksi</button>
+        </div>
+        <div style="margin-bottom:12px;">
+          <label style="display:block;font-size:13px;font-weight:700;color:var(--accent);margin-bottom:5px;">Hook / Pembuka</label>
+          <textarea id="inHook" rows="2" placeholder="Pilih dari pustaka atau tulis sendiri..." style="width:100%;padding:11px;border:2px solid #fce7f3;border-radius:10px;font-size:14px;resize:vertical;"></textarea>
+        </div>
+        <div style="margin-bottom:12px;">
+          <label style="display:block;font-size:13px;font-weight:700;color:#7c3aed;margin-bottom:5px;">Isi Naskah</label>
+          <textarea id="inNaskah" rows="5" placeholder="Ceritakan isi konten di sini..." style="width:100%;padding:11px;border:2px solid #ede9fe;border-radius:10px;font-size:14px;resize:vertical;"></textarea>
+        </div>
+        <div>
+          <label style="display:block;font-size:13px;font-weight:700;color:var(--green);margin-bottom:5px;">CTA / Ajakan</label>
+          <textarea id="inCTA" rows="2" placeholder="Apa yang penonton lakukan setelah nonton?" style="width:100%;padding:11px;border:2px solid #d1fae5;border-radius:10px;font-size:14px;resize:vertical;"></textarea>
+        </div>
+      </div>
+
+      <button onclick="generate()" style="width:100%;padding:15px;border:none;border-radius:14px;color:#fff;font-weight:800;font-size:16px;cursor:pointer;box-shadow:0 10px 28px rgba(189,49,147,.35);margin-bottom:16px;" class="grad"><i class="ri-magic-fill"></i> BUAT KONTEN SIAP UPLOAD</button>
+
+      <div id="hasilBox" style="display:none;" class="fade-in">
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;box-shadow:0 4px 20px rgba(189,49,147,.12);">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <div style="width:32px;height:32px;border-radius:50%;background:#dcfce7;display:flex;align-items:center;justify-content:center;color:#16a34a;"><i class="ri-check-line" style="font-size:18px;"></i></div>
+            <h3 style="font-weight:800;font-size:17px;margin:0;">Siap Upload!</h3>
+          </div>
+          <pre id="hasilTeks" style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:14px;font-size:13px;line-height:1.7;white-space:pre-wrap;max-height:280px;overflow-y:auto;margin:0 0 14px;"></pre>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
+            <button onclick="copyAll()" style="padding:11px;border:none;border-radius:10px;background:var(--accent2);color:#fff;font-weight:700;font-size:13px;cursor:pointer;"><i class="ri-file-copy-line"></i> Salin Teks</button>
+            <button onclick="saveTxt()" style="padding:11px;border:none;border-radius:10px;background:var(--green);color:#fff;font-weight:700;font-size:13px;cursor:pointer;"><i class="ri-download-line"></i> Simpan .txt</button>
+            <button onclick="exportPNG()" style="padding:11px;border:none;border-radius:10px;background:#7c3aed;color:#fff;font-weight:700;font-size:13px;cursor:pointer;"><i class="ri-image-line"></i> Ekspor PNG</button>
+            <button onclick="resetAll()" style="padding:11px;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--muted);font-weight:700;font-size:13px;cursor:pointer;"><i class="ri-refresh-line"></i> Buat Baru</button>
+          </div>
+          <div style="background:var(--accent2-soft);border:1px solid rgba(8,145,178,.25);border-radius:10px;padding:12px;font-size:12px;">
+            <p style="font-weight:700;color:var(--accent2);margin:0 0 6px;"><i class="ri-lightbulb-flash-line"></i> Langkah terakhir:</p>
+            <ol style="margin:0;padding-left:18px;line-height:1.8;">
+              <li>Buka CapCut → Proyek baru (rasio 9:16)</li>
+              <li>Tempel naskah → fitur Teks ke Suara</li>
+              <li>Nyalakan Subtitle Otomatis → pilih musik</li>
+              <li>Ekspor → langsung upload</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:36px;padding-top:20px;border-top:1px solid var(--border);font-size:12px;color:var(--muted);">
+    <p style="font-weight:700;color:var(--text);margin:0 0 4px;">R LAAMBO · Edukasi & Dongeng Anak</p>
+    <p style="margin:0;">riyanti_shop · v1.0 Final · Proyek, koleksi & favorit tersimpan otomatis di perangkat ini</p>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+</div>
+
+<script>
+(function(){
+  var P = {
+    edukasi:{hook:["Ternyata ini cara yang benar — bukan dipaksa!","Jangan ajarkan anak hal ini sebelum tahu faktanya.","9 dari 10 orang tua salah langkah di sini.","Anak tidak mau belajar? Bukan malas, ini penyebabnya.","Cukup 10 menit sehari, hasilnya terlihat dalam seminggu.","Bukan seberapa cepat, tapi seberapa paham — kuncinya di sini.","Berhenti menyuruh anak duduk diam, justru ini yang dibutuhkan."],naskah:["Banyak orang tua mengira harus dipaksa. Padahal otak anak belajar paling cepat saat dia merasa penasaran dan senang.\n\nMulailah pelan-pelan, sedikit tiap hari. Biarkan dia bertanya, mencoba, dan salah — di situlah pemahaman sesungguhnya terbentuk.","Konsistensi mengalahkan intensitas. Lebih baik 10 menit setiap hari daripada 2 jam sekali seminggu.\n\nAnak butuh rutinitas yang tenang, bukan tekanan yang mendesak. Perlahan dia akan tumbuh dengan sendirinya.","Setiap anak punya cara belajar yang berbeda. Ada yang lewat melihat, mendengar, bergerak, atau menyentuh.\n\nJangan paksa dia ikut cara orang lain. Temukan gayanya, dan biarkan dia berkembang sesuai kecepatannya sendiri."],cta:["Simpan dulu biar tidak hilang, lalu praktikkan mulai hari ini!","Bagikan ke orang tua lain yang pasti butuh info ini.","Komen SIAP kalau mau mulai menerapkannya sekarang.","Simpan sebagai pengingat, buka tiap pagi sebelum memulai.","Tag teman yang sedang mendidik anak, ini penting untuk mereka."],paket:[{h:"Ternyata ini cara yang benar — bukan dipaksa!",n:"Banyak orang tua mengira harus dipaksa. Padahal otak anak belajar paling cepat saat dia merasa penasaran dan senang.\n\nMulailah pelan-pelan, sedikit tiap hari. Biarkan dia bertanya, mencoba, dan salah — di situlah pemahaman sesungguhnya terbentuk.",c:"Simpan dulu biar tidak hilang, lalu praktikkan mulai hari ini!"}]},
+    dongeng:{hook:["Dongeng sebelum tidur yang ajarkan anak arti keberanian.","Cerita pendek yang bikin anak tenang dan tertidur nyenyak.","Kisah sederhana yang mengajarkan kebaikan tanpa menggurui.",
